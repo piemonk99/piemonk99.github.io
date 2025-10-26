@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Game Projects | Your Name</title>
+    <title>Game Projects | Your Name</title>
     <style>
         * {
             margin: 0;
@@ -11,19 +11,36 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #121225;
+            --bg-card: #1e1e38;
+            --bg-hover: #2a2a4a;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d8;
+            --accent-primary: #ff2a6d;
+            --accent-secondary: #8a2be2;
+            --border: #3a3a5a;
+            --gradient: linear-gradient(135deg, #ff2a6d 0%, #8a2be2 100%);
+            --gradient-muted: linear-gradient(135deg, rgba(255, 42, 109, 0.2) 0%, rgba(138, 43, 226, 0.2) 100%);
+            --gradient-text: linear-gradient(135deg, #ff2a6d, #8a2be2);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
+            color: var(--text-primary);
+            background-color: var(--bg-dark);
+            min-height: 100vh;
         }
 
         .navbar {
-            background-color: #2c3e50;
+            background-color: rgba(18, 18, 37, 0.95);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
@@ -36,10 +53,14 @@
         }
 
         .logo {
-            color: white;
+            color: var(--text-primary);
             font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -49,88 +70,183 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #3498db;
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 0 auto;
             padding: 0 2rem;
         }
 
         .page-header {
             text-align: center;
-            margin-bottom: 3rem;
+            padding: 6rem 0 4rem;
         }
 
         .page-header h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .page-header p {
-            font-size: 1.1rem;
-            color: #7f8c8d;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0 6rem;
         }
 
         .game-card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            z-index: 2;
         }
 
         .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 40px rgba(255, 42, 109, 0.2);
         }
 
-        .game-card h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .game-image {
+            width: 100%;
+            height: 280px;
+            background: var(--gradient-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
         }
 
-        .game-card p {
-            color: #666;
+        .game-image::after {
+            content: 'Game Screenshot';
+            position: absolute;
+        }
+
+        .game-content {
+            padding: 2rem;
+        }
+
+        .game-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
             margin-bottom: 1rem;
+        }
+
+        .game-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .game-link {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-primary);
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .game-link:hover {
-            background-color: #2980b9;
+            color: var(--accent-secondary);
+            transform: translateX(5px);
+        }
+
+        .game-link::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .game-link:hover::after {
+            transform: translateX(3px);
         }
 
         footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            background: var(--bg-card);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
         }
 
         @media (max-width: 768px) {
@@ -145,6 +261,26 @@
 
             .games-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .game-card {
+                margin: 0 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-card {
+                margin: 0;
             }
         }
     </style>
@@ -156,6 +292,7 @@
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/games.html">Games</a></li>
+                <li><a href="/music.html">Music</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
@@ -165,35 +302,86 @@
     <div class="container">
         <header class="page-header">
             <h1>My Game Projects</h1>
-            <p>A collection of game demos and projects I've worked on</p>
+            <p>A collection of Unity games and interactive experiences I've developed</p>
         </header>
 
         <div class="games-grid">
-            <!-- Game Card Template - Copy and modify for each project -->
-            <div class="game-card">
-                <h3>Project Title 1</h3>
-                <p>Brief description of your game project. What it's about, technologies used, etc.</p>
-                <a href="/games/project1.html" class="game-link">View Project</a>
+            <!-- Game Card 1 -->
+            <div class="game-card" onclick="location.href='/games/project1.html'">
+                <div class="game-image"></div>
+                <div class="game-content">
+                    <h3>Project Title 1</h3>
+                    <p>A brief description of your game project. Explain the core concept, gameplay mechanics, and what makes it unique. Keep it engaging but concise.</p>
+                    <a href="/games/project1.html" class="game-link">View Project Details</a>
+                </div>
             </div>
 
-            <div class="game-card">
-                <h3>Project Title 2</h3>
-                <p>Brief description of your game project. What it's about, technologies used, etc.</p>
-                <a href="/games/project2.html" class="game-link">View Project</a>
+            <!-- Game Card 2 -->
+            <div class="game-card" onclick="location.href='/games/project2.html'">
+                <div class="game-image"></div>
+                <div class="game-content">
+                    <h3>Project Title 2</h3>
+                    <p>Describe your second game project here. Focus on the key features and what players can expect from the experience.</p>
+                    <a href="/games/project2.html" class="game-link">View Project Details</a>
+                </div>
             </div>
 
-            <div class="game-card">
-                <h3>Project Title 3</h3>
-                <p>Brief description of your game project. What it's about, technologies used, etc.</p>
-                <a href="/games/project3.html" class="game-link">View Project</a>
+            <!-- Game Card 3 -->
+            <div class="game-card" onclick="location.href='/games/project3.html'">
+                <div class="game-image"></div>
+                <div class="game-content">
+                    <h3>Project Title 3</h3>
+                    <p>Brief overview of your third game project. Highlight the main gameplay elements and any technical achievements.</p>
+                    <a href="/games/project3.html" class="game-link">View Project Details</a>
+                </div>
             </div>
 
-            <!-- Add more game cards as needed -->
+            <!-- Game Card 4 -->
+            <div class="game-card" onclick="location.href='/games/project4.html'">
+                <div class="game-image"></div>
+                <div class="game-content">
+                    <h3>Project Title 4</h3>
+                    <p>Description of your fourth game project. Mention the genre, key mechanics, and what you learned during development.</p>
+                    <a href="/games/project4.html" class="game-link">View Project Details</a>
+                </div>
+            </div>
+
+            <!-- Game Card 5 -->
+            <div class="game-card" onclick="location.href='/games/project5.html'">
+                <div class="game-image"></div>
+                <div class="game-content">
+                    <h3>Project Title 5</h3>
+                    <p>Overview of your fifth game project. Focus on the unique aspects and what sets it apart from other games.</p>
+                    <a href="/games/project5.html" class="game-link">View Project Details</a>
+                </div>
+            </div>
+
+            <!-- Game Card 6 -->
+            <div class="game-card" onclick="location.href='/games/project6.html'">
+                <div class="game-image"></div>
+                <div class="game-content">
+                    <h3>Project Title 6</h3>
+                    <p>Description of your sixth game project. Talk about the development process and any interesting challenges you overcame.</p>
+                    <a href="/games/project6.html" class="game-link">View Project Details</a>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2024 Your Name. All rights reserved.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/games.html">Games</a></li>
+                    <li><a href="/music.html">Music</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
