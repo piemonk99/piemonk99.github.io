@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Luc Wagner</title>
     <style>
-        /* Copy the exact same CSS from your music.html file */
-        /* This ensures consistent styling across all pages */
         * {
             margin: 0;
             padding: 0;
@@ -27,9 +25,288 @@
             --gradient-text: linear-gradient(135deg, #ff2a6d, #8a2be2);
         }
 
-        /* Copy all the CSS styles from your music.html file here */
-        /* I'm omitting the full CSS for brevity, but use your existing styles */
-        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: rgba(18, 18, 37, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            background: var(--text-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 6rem 0 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .music-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0 6rem;
+        }
+
+        .music-track {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .music-track::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            border-radius: 16px 0 0 16px;
+        }
+
+        .music-track:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+
+        .track-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .track-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .track-header p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            height: 50px;
+            border-radius: 8px;
+        }
+
+        /* Custom audio player styling */
+        .custom-audio-player {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-dark);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .play-btn {
+            background: var(--gradient);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .play-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        .progress-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--gradient);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .time {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        footer {
+            background: var(--bg-card);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .music-track {
+                padding: 2rem;
+            }
+
+            .custom-audio-player {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .progress-container {
+                width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
