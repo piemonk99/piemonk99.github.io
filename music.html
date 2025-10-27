@@ -32,9 +32,84 @@
       background-color: var(--bg-dark);
       min-height: 100vh;
     }
+
+    .navbar {
+      background-color: rgba(18, 18, 37, 0.95);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+  }
+
+  .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.logo {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+  }
+
+  .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      position: relative;
+  }
+
+  .nav-links a:hover {
+      color: var(--text-primary);
+  }
+
+  .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+      width: 100%;
+  }
+    
   </style>
 </head>
 <body>
-  
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo">Luc Wagner</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/games.html">Games</a></li>
+        <li><a href="/music.html">Music</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 </body>
 </html>
