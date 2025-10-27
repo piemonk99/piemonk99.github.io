@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Luc Wagner</title>
+    <style>
+        /* Copy the exact same CSS from your music.html file */
+        /* This ensures consistent styling across all pages */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #121225;
+            --bg-card: #1e1e38;
+            --bg-hover: #2a2a4a;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d8;
+            --accent-primary: #ff2a6d;
+            --accent-secondary: #8a2be2;
+            --border: #3a3a5a;
+            --gradient: linear-gradient(135deg, #ff2a6d 0%, #8a2be2 100%);
+            --gradient-muted: linear-gradient(135deg, rgba(255, 42, 109, 0.2) 0%, rgba(138, 43, 226, 0.2) 100%);
+            --gradient-text: linear-gradient(135deg, #ff2a6d, #8a2be2);
+        }
+
+        /* Copy all the CSS styles from your music.html file here */
+        /* I'm omitting the full CSS for brevity, but use your existing styles */
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">Luc Wagner</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/games.html">Games</a></li>
+                <li><a href="/music.html">Music</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h1>About Me</h1>
+            <p>All-purpose game developer</p>
+        </header>
+
+        <div class="about-content" style="max-width: 800px; margin: 0 auto; padding: 2rem 0 6rem;">
+            <div style="background: var(--bg-card); border-radius: 16px; padding: 3rem; border: 1px solid var(--border); position: relative;">
+                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gradient); border-radius: 16px 0 0 16px;"></div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start;">
+                    <div>
+                        <div style="width: 200px; height: 200px; background: var(--gradient-muted); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-style: italic;">
+                            Your Photo
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Hello! I'm [Your Name]</h2>
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                            Hello! I'm Luc Wagner. I am a passionate game developer that excels at coding and game design, and I can effectively communicate and collaborate with developers from other facets of game design.
+                            Above all, I love iterating and designing the perfect user experience through game mechanics and level design.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">
+                            As might be expected, if I'm not busy on a personal project, my free time consists primarily of playing video games. I also enjoy listening to and composing music.
+                        </p>
+                        
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="/contact.html" style="background: var(--gradient); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                Get In Touch
+                            </a>
+                            <a href="/games.html" style="background: transparent; color: var(--accent-primary); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid var(--accent-primary); transition: all 0.3s ease;">
+                                View My Work
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2025 Luc Wagner. All rights reserved.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/games.html">Games</a></li>
+                    <li><a href="/music.html">Music</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
