@@ -5,103 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hazzardous | Luc Wagner</title>
     <style>
-        /* Add these styles to your project pages */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .project-logo {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .project-logo img {
+            max-width: 400px;
+            max-height: 200px;
+            width: auto;
+            height: auto;
+        }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
+        .content-section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+            position: relative;
+        }
 
-.page-header {
-    text-align: center;
-    padding: 4rem 0 3rem;
-}
+        .content-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            border-radius: 16px 0 0 16px;
+        }
 
-.page-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+        .content-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
 
-.project-logo {
-    text-align: center;
-    margin: 2rem 0;
-}
+        .content-image, .content-gif {
+            text-align: center;
+            margin: 2rem 0;
+        }
 
-.project-logo img {
-    max-width: 400px;
-    max-height: 200px;
-    width: auto;
-    height: auto;
-}
-
-.content-section {
-    background: var(--bg-card);
-    border-radius: 16px;
-    padding: 3rem;
-    margin: 2rem 0;
-    border: 1px solid var(--border);
-    position: relative;
-}
-
-.content-section::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--gradient);
-    border-radius: 16px 0 0 16px;
-}
-
-.content-section p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-}
-
-.content-image, .content-gif {
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.content-image img, .content-gif img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--accent-primary);
-    text-decoration: none;
-    font-weight: 600;
-    margin: 2rem 0;
-    transition: all 0.3s ease;
-}
-
-.back-link:hover {
-    color: var(--accent-secondary);
-    transform: translateX(-5px);
-}
-
-.back-link::before {
-    content: '←';
-    margin-right: 0.5rem;
-    transition: transform 0.3s ease;
-}
-
-.back-link:hover::before {
-    transform: translateX(-3px);
-}
+        .content-image img, .content-gif img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+         .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-secondary);
+            transform: translateX(-5px);
+        }
+        
+        .back-link::before {
+            content: '←';
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-link:hover::before {
+            transform: translateX(-3px);
+        }
     </style>
 </head>
 <body>
