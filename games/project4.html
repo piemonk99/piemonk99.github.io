@@ -193,6 +193,36 @@
             border-radius: 8px;
             border: 1px solid var(--border);
         }
+
+        .content-gif-split {
+            display: flex;
+            gap: 20px; /* Space between the two GIFs */
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        }
+        
+        .gif-container {
+            flex: 1; /* Each container takes equal space */
+            min-width: 250px; /* Minimum width before wrapping */
+            max-width: 500px; /* Maximum width for larger screens */
+            text-align: center;
+        }
+        
+        .gif-label {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .gif-container img {
+            width: 100%; /* Makes GIF responsive to container size */
+            height: auto;
+            border-radius: 4px; /* Optional: adds rounded corners */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional: subtle shadow */
+        }
         
         .back-link {
             display: inline-flex;
@@ -301,12 +331,8 @@
             </a>
         </header>
 
-        <div class="project-logo">
-            <img src="../images/wicker-logo.png" alt="Wicker Logo">
-        </div>
-
         <div class="content-section">
-            <p>Wicker is...</p>
+            <p>Wicker is a 2D metroidvania with grappling physics. It is currently in development, and will feature movement-based combat as well as physics-based puzzles.</p>
         </div>
 
         <div class="content-image">
@@ -314,11 +340,18 @@
         </div>
 
         <div class="content-section">
-            <p>...</p>
+            <p>There are a few systems put into place modularly, including a weapon system that supports multiple types of weapons, each with their own code.</p>
         </div>
 
-        <div class="content-gif">
-            <img src="../images/wicker-gif-1.gif" alt="Wicker Gameplay GIF">
+        <div class="content-gif-split">
+            <div class="gif-container">
+                <div class="gif-label">Wicker Gameplay 1</div>
+                <img src="../images/wicker-gif-1.gif" alt="Wicker Gameplay GIF 1">
+            </div>
+            <div class="gif-container">
+                <div class="gif-label">Wicker Gameplay 2</div>
+                <img src="../images/wicker-gif-2.gif" alt="Wicker Gameplay GIF 2">
+            </div>
         </div>
 
         <div class="content-section">
